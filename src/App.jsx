@@ -1,3 +1,8 @@
+import Header from "./components/Header";
+import RecentThreads from "./routes/RecentThreads";
+import CreateThreads from "./routes/CreateThreads";
+import DetailThreds from "./routes/DetailThreads";
+import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import "./App.css";
@@ -16,29 +21,14 @@ function App() {
     }
     fetchData();
   }, []);
-
   return (
     <>
-      <header>
-        <h1>
-          <a href="#">掲示板</a>
-        </h1>
-        <nav>
-          <div id="create-thread">
-            <a href="#">スレッドを立てる</a>
-          </div>
-        </nav>
-      </header>
-      <main>
-        <h2>新着スレッド</h2>
-        <ul>
-          {threads.map((thread) => (
-            <li key={thread.id}>
-              <a href={`/threads/${thread.id}`}>{thread.title}</a>
-            </li>
-          ))}
-        </ul>
-      </main>
+      <Header />
+      <Routes>
+        <Route path="/" element={<RecentThreads threads={threads} />} />
+        <Route path="/create" element={<CreateThreads />} />
+        <Route path="/threads/:thread_id" element={<DetailThreds />} />
+      </Routes>
     </>
   );
 }

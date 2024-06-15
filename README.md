@@ -1,8 +1,10 @@
-# React + Vite
+# memo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+6/16 とりあえず、station1~5 の最低限の機能を実装した。
 
-Currently, two official plugins are available:
+### 今後
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- スタイルを整える
+- 詳細画面のタイトル表示もっといい感じに実装できないか考える
+- コンポーネントの細分化
+- レスポンスに応じたエラーハンドリング(現在は 200 であることを前提としている)
