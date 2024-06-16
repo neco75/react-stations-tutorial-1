@@ -6,7 +6,6 @@ import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import "./App.css";
-import "./reset.css";
 
 function App() {
   const [threads, setThreads] = useState([]);
@@ -32,6 +31,10 @@ function App() {
           element={<DetailThreds threads={threads} />}
         />
       </Routes>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/modern-css-reset/dist/reset.min.css"
+      />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "../styles/DetailThreads.css";
 
 function DetailThreads(props) {
   const { thread_id } = useParams();
@@ -34,17 +35,25 @@ function DetailThreads(props) {
           window.location.reload();
         });
       }
-      createPost();
-      document.getElementById("new_post").value = "";
+      if (new_post == "") {
+        alert("テキストを入力してください");
+      } else {
+        createPost();
+        document.getElementById("new_post").value = "";
+        alert("投稿しました");
+      }
     } catch (error) {
       console.error("Error:", error);
     }
   }
 
   return (
-    <div style={{ display: "flex", width: "100%" }}>
-      <div style={{ width: "100%" }}>
-        <h2>{props.threads.find((thread) => thread.id == thread_id)?.title}</h2>
+    <div id="detail-contents">
+      <div id="comments-area">
+        <h2>
+          Title :{" "}
+          {props.threads.find((thread) => thread.id == thread_id)?.title}
+        </h2>
         <ul>
           {posts.map((post) => (
             <li key={post.id}>
@@ -53,10 +62,15 @@ function DetailThreads(props) {
           ))}
         </ul>
       </div>
-      <div style={{ width: "100%" }}>
+      <div id="submit-area">
         <h2>投稿</h2>
-        <div style={{ display: "flex" }}>
-          <textarea name="new_post" id="new_post" required></textarea>
+        <div id="submit-form">
+          <textarea
+            name="new_post"
+            id="new_post"
+            placeholder="テキストを入力してください"
+            required
+          ></textarea>
           <button onClick={handleClick}>投稿</button>
         </div>
       </div>

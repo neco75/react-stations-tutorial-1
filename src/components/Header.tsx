@@ -1,9 +1,10 @@
 import React from "react";
+import "../styles/Header.css";
 
 function Header() {
   return (
     <>
-      <header>
+      <header id="header">
         <h1>
           <a href="/">掲示板</a>
         </h1>
