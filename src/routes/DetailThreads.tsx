@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function DetailThreads() {
+function DetailThreads(props) {
   const { thread_id } = useParams();
   const [posts, setPosts] = useState([]);
 
@@ -44,7 +44,7 @@ function DetailThreads() {
   return (
     <div style={{ display: "flex", width: "100%" }}>
       <div style={{ width: "100%" }}>
-        <h2>{window.location.search.split("=")[1]}</h2>
+        <h2>{props.threads.find((thread) => thread.id == thread_id)?.title}</h2>
         <ul>
           {posts.map((post) => (
             <li key={post.id}>
