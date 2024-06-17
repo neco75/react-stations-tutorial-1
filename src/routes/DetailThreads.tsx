@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 import "../styles/DetailThreads.css";
 
 function DetailThreads(props) {
@@ -16,34 +15,34 @@ function DetailThreads(props) {
       setPosts(data.posts);
     }
     fetchData();
-  }, []);
+  }, [posts]);
 
-  function handleClick() {
+  async function createPost(new_post) {
     try {
-      const new_post = document.getElementById("new_post").value;
-      async function createPost() {
-        await fetch(
-          `https://railway.bulletinboard.techtrain.dev/threads/${thread_id}/posts`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ post: new_post }),
-          }
-        ).then(() => {
-          window.location.reload();
-        });
-      }
-      if (new_post == "") {
-        alert("テキストを入力してください");
-      } else {
-        createPost();
-        document.getElementById("new_post").value = "";
-        alert("投稿しました");
-      }
+      await fetch(
+        `https://railway.bulletinboard.techtrain.dev/threads/${thread_id}/posts`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ post: new_post }),
+        }
+      );
+      setPosts([]);
     } catch (error) {
       console.error("Error:", error);
+    }
+  }
+
+  function handleClick() {
+    const new_post = document.getElementById("new_post").value;
+    if (new_post === "") {
+      alert("テキストを入力してください");
+    } else {
+      createPost(new_post);
+      document.getElementById("new_post").value = "";
+      alert("投稿しました");
     }
   }
 

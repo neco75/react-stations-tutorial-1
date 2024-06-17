@@ -25,7 +25,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<RecentThreads threads={threads} />} />
-        <Route path="/create" element={<CreateThreads />} />
+        <Route path="/threads/new" element={<CreateThreads />} />
         <Route
           path="/threads/:thread_id"
           element={<DetailThreds threads={threads} />}

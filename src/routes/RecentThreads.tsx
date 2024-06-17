@@ -8,9 +8,7 @@ function RecentThreads(props) {
       <ul>
         {props.threads.map((thread) => (
           <li key={thread.id}>
-            <a href={`/threads/${thread.id}?title=${thread.title}`}>
-              {thread.title}
-            </a>
+            <a href={`/threads/${thread.id}`}>{thread.title}</a>
           </li>
         ))}
       </ul>

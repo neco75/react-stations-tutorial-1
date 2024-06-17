@@ -10,7 +10,7 @@ function Header() {
         </h1>
         <nav>
           <div id="create-thread">
-            <a href="/create">スレッドを立てる</a>
+            <a href="/threads/new">スレッドを立てる</a>
           </div>
         </nav>
       </header>
