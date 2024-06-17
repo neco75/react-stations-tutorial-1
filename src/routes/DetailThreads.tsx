@@ -42,7 +42,6 @@ function DetailThreads(props) {
     } else {
       createPost(new_post);
       document.getElementById("new_post").value = "";
-      alert("投稿しました");
     }
   }
 
